@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Prueba_Practia.Models.InvoiceProduct>
+
+@{
+    ViewBag.Title = "InvoiceDetails";
+}
+
+<h2>Invoice Details Id: @Html.DisplayFor(modelItem => Model.First().InvoiceId)</h2>
+
+
+<table class="table">
+    <tr class="headtable">
+
+        <th>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SellPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Total)
+        </th>
+
+
+        <th></th>
+    </tr>
+    @{
+        decimal? total = 0;
+    }
+    @foreach (var item in Model)
+    {
+        total += item.Total;
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SellPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+
+
+
+        </tr>
+    }
+
+</table>
+
+<div class="totalprice">
+    <h2>Total: $@total</h2>
+</div>
